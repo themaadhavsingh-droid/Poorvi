@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7c3aed">
+  <meta name="description" content="Poorvi School Assistant - school homework and notice helper">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.svg">
+  <link rel="icon" href="icon-192.svg">
+  <link rel="stylesheet" href="style.css">
+  <title>Poorvi School Assistant</title>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="brand">📚 Poorvi School Assistant</div>
+      <div class="subbrand">School messages ko simple Hindi mein samjho</div>
+    </div>
+    <button id="settingsBtn" class="icon-btn" aria-label="Settings">⚙️</button>
+  </header>
+
+  <main class="wrap">
+    <section class="hero card">
+      <div class="hero-icon">👧</div>
+      <div>
+        <h1>Poorvi ke school ka kaam</h1>
+        <p>WhatsApp screenshot, diary photo, PDF ya message bhejo. Main bataunga <b>kya karna hai</b>, <b>kab karna hai</b> aur <b>kya lekar jana hai</b>.</p>
+      </div>
+    </section>
+
+    <section class="card input-card">
+      <div class="section-title">1. School material bhejo</div>
+      <div class="quick-actions">
+        <label class="action primary">
+          📷 Photo / Screenshot
+          <input id="fileInput" type="file" accept="image/*,application/pdf,text/plain,.txt" multiple capture="environment" hidden>
+        </label>
+        <button id="voiceBtn" class="action">🎙️ Bolkar bhejo</button>
+        <button id="pasteBtn" class="action">📋 Message paste</button>
+      </div>
+      <div id="fileList" class="file-list empty">Abhi koi file select nahi ki</div>
+      <textarea id="textInput" class="text-input" rows="5" placeholder="WhatsApp ke copied messages ya diary ka text yahan paste kar sakte hain..."></textarea>
+      <div id="voiceStatus" class="voice-status" hidden></div>
+      <button id="analyzeBtn" class="analyze">✨ Samjho & Summary banao</button>
+      <div id="status" class="status" aria-live="polite"></div>
+    </section>
+
+    <section id="resultSection" class="result-grid" hidden>
+      <div class="card highlight">
+        <div class="section-title">🚨 Sabse zaroori</div>
+        <div id="urgentList" class="list"></div>
+      </div>
+      <div class="card">
+        <div class="section-title">✅ Aaj Poorvi ko kya karna hai</div>
+        <div id="todayList" class="checklist"></div>
+      </div>
+      <div class="card">
+        <div class="section-title">📚 Homework</div>
+        <div id="homeworkList" class="list"></div>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <div class="section-title">📝 Test / Exam</div>
+          <div id="examList" class="list"></div>
+        </div>
+        <div class="card">
+          <div class="section-title">🎒 Kya lekar / jama karna hai</div>
+          <div id="bringList" class="list"></div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <div class="section-title">📅 Important dates</div>
+          <div id="dateList" class="list"></div>
+        </div>
+        <div class="card">
+          <div class="section-title">❓ Clear nahi hai</div>
+          <div id="unclearList" class="list"></div>
+        </div>
+      </div>
+      <div class="card actions-row">
+        <button id="speakBtn" class="action primary">🔊 Hindi mein sunao</button>
+        <button id="copyBtn" class="action">📋 Summary copy</button>
+        <button id="shareBtn" class="action">↗️ Share</button>
+        <button id="clearBtn" class="action danger">🗑️ Clear</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">🧠 Is app ko kya-kya samajhna hai</div>
+      <div class="feature-chips">
+        <span>WhatsApp messages</span><span>Diary photos</span><span>School circular PDF</span><span>Homework</span><span>Test dates</span><span>Bring / submit</span><span>Hindi explanation</span><span>Voice</span>
+      </div>
+      <p class="small-note">Important: app WhatsApp ke group ko khud open/read nahi kar sakta. WhatsApp se screenshot, copied text, ya Export Chat bhejna padega.</p>
+    </section>
+
+    <section class="card history-card">
+      <div class="section-title">🕘 Pichhli summaries</div>
+      <div id="historyList" class="history"></div>
+    </section>
+  </main>
+
+  <div id="settingsModal" class="modal" hidden>
+    <div class="modal-box">
+      <div class="modal-head"><h2>⚙️ Settings</h2><button id="closeSettings" class="icon-btn">✕</button></div>
+      <label class="label">Gemini API key</label>
+      <input id="apiKey" class="key-input" type="password" placeholder="AIza...">
+      <p class="small-note">Ye app Google Gemini ke Free Tier ko use kar sakta hai. Key isi phone ke browser mein save hoti hai. Public website par apni key share na karein.</p>
+      <a id="getKeyLink" class="link-btn" target="_blank" rel="noopener">🔑 Free Gemini key banane ka page kholo</a>
+      <div class="model-row"><span>Model</span><b>Gemini 3.8 Flash</b></div>
+      <button id="saveSettings" class="analyze">💾 Save</button>
+      <button id="clearKey" class="action danger full">API key hatao</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

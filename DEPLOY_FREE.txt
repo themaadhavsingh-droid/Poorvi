@@ -1,0 +1,11 @@
+MOBILE VERSION KO FREE INTERNET APP BANANE KE LIYE
+==================================================
+
+Ye folder ready hai. Isse kisi free static hosting par upload karna hoga taaki phone par HTTPS URL mil jaye aur PWA install/share target kaam kare.
+
+Simple options:
+• GitHub Pages
+• Cloudflare Pages
+• Netlify
+
+Folder ke andar build command ki zarurat nahi hai. Bas files upload karni hain.
